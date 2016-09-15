@@ -17,10 +17,8 @@ class CompFiles
 			{
 				i = f1.read();
 				j = f2.read();
-
-				f1.compareToIgnoreCase(f2);
-
-				if(i != j)
+				
+				if((i != j) & ((i+32)!=j) & ((i-32)!=j) & (i != (j+32)) & (i != (j-32)))
 					break;
 			}
 			while(i != -1 && j != -1);
