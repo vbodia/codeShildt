@@ -10,15 +10,18 @@ class TickTock
 			notify(); // uvedomit' ojidayushie potoki
 			return;
 		}
+		
+		try
+		{
 		System.out.print("Tick ");
+		Thread.sleep(1000);
 
 		state = "ticked"; // ustanovit' tekushee sostoyanie posle takta tick
 		notify(); // metod tick() uvedomlyaet metod tock()
 
-		try
-		{
 			while(!state.equals("tocked"))
 				wait(); // metod tick() ojidaet zaversheniya metoda tock().
+			
 		}
 		catch(InterruptedException exc)
 		{
@@ -35,15 +38,18 @@ class TickTock
 			return;
 		}
 		
-		System.out.print("Tock ");
-		
-		state = "tocked"; // ustanovit' tekushee sostoyanie posle takta tak
-		notify(); // metod tock() uvedomlyaet metod tick() o vozmojnosti prodoljeniya 
+		 
 
 		try
 		{
+		System.out.print("Tock ");
+		Thread.sleep(1000);
+		
+		state = "tocked"; // ustanovit' tekushee sostoyanie posle takta tak
+		notify(); // metod tock() uvedomlyaet metod tick() o vozmojnosti prodoljeniya
 			while(!state.equals("ticked"))
 				wait(); // metod tock() ojidaet zaversheniya metoda tick()
+			
 		}
 		catch(InterruptedException exc)
 		{
